@@ -33,12 +33,12 @@ export default class GameScene extends Phaser.Scene {
 
     this.add.text(512, 85, 'Arraste uma ameba até outra para evoluir!', {
       fontSize: '18px',
-      fill: '#cccccc'
+      fill: 'black'
     }).setOrigin(0.5);
 
     this.createInitialAmoebas();
     this.time.addEvent({
-      delay: 1000, // 10 segundos
+      delay: 5000, // 5 segundos
       callback: this.spawnRandomAmoeba,
       callbackScope: this,
       loop: true
@@ -91,10 +91,11 @@ export default class GameScene extends Phaser.Scene {
     
   }
   spawnRandomAmoeba() {
-    const x = Phaser.Math.Between(100, 924);  // dentro da tela 1024x768
-    const y = Phaser.Math.Between(100, 668);
+    const x = Phaser.Math.Between(300, 700);  // dentro da tela 1024x768
+    const y = Phaser.Math.Between(600, 200);
 
-    const amoeba = new Amoeba(this, x, y, 'amoebaBasic');
+    const amoeba = new Amoeba(this, x, y, 'basic');
+  
     this.add.existing(amoeba);
     this.input.setDraggable(amoeba);
     this.amoebas.push(amoeba);
