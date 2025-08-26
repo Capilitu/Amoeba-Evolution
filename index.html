@@ -1,33 +1,67 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Evolução das Amebas - Biologia Interativa</title>
-  <script type="importmap">
-    {
-      "imports": {
-        "phaser": "https://esm.sh/phaser@3.70.0"
-      }
-    }
-  </script>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      height: 100vh;
-      overflow: hidden;
-      background: linear-gradient(135deg, #1e3c72, #2a5298);
-      font-family: Arial, sans-serif;
-    }
-    #phaser-game-container {
-      width: 100%;
-      height: 100%;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <title>Amoeba Evolution</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <div id="phaser-game-container"></div>
-  <script type="module" src="main.js"></script>
+  <div id="game-container">
+    <canvas id="gameCanvas" width="1280" height="720"></canvas>
+
+    <!-- HUD de moedas -->
+    <div id="hud">
+      <span id="coins">💰 0</span>
+    </div>
+
+    <!-- Botões principais -->
+    <div id="ui-buttons">
+      <button id="homeBtn">🏠 Home</button>
+      <button id="shopBtn">🛒 Shop</button>
+      <button id="libraryBtn">📚 Biblioteca</button>
+      <button id="inventoryBtn">🎒 Inventário</button>
+    </div>
+
+    <!-- Botão de upgrade -->
+    <button id="upgradeBtn">🧬</button>
+
+    <!-- Botão de compra de amoeba -->
+    <button id="buyAmoebaBtn">➕ Amoeba</button>
+
+    <!-- Pop-up de Upgrades -->
+    <div id="upgrade-popup" class="hidden">
+      <div class="popup-content">
+        <h2>✨ Upgrades ✨</h2>
+        <div id="upgrade-list"></div>
+        <button id="closeUpgrade">Fechar</button>
+      </div>
+    </div>
+
+    <!-- Pop-up de Compra de Amoebas -->
+    <div id="buy-popup" class="hidden">
+      <div class="popup-content">
+        <h2>🧫 Comprar Amoebas</h2>
+        <div id="buy-list"></div>
+        <button id="closeBuy">Fechar</button>
+      </div>
+    </div>
+
+    <!-- Pop-up Educativo de Nova Amoeba -->
+    <div id="info-popup" class="hidden">
+      <div class="popup-content">
+        <h2>🔬 Nova Amoeba Desbloqueada!</h2>
+        <img id="info-image" src="assets/images/amoeba.jpg" alt="Amoeba" />
+        <p id="info-date"><strong>📅 Descoberta:</strong> 1800</p>
+        <p id="info-habitat"><strong>🌍 Habitat:</strong> Lagos e rios de água doce</p>
+        <p id="info-description">
+          Esta é uma amoeba incrível, conhecida por sua capacidade de adaptação e por ser um dos seres vivos mais simples do planeta.
+        </p>
+        <button id="closeInfo">Fechar</button>
+      </div>
+    </div>
+  </div>
+
+<script src="js/main.js"></script>
+
 </body>
 </html>

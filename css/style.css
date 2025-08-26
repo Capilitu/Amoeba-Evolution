@@ -1,0 +1,242 @@
+/* ===== Reset & Base ===== */
+body {
+  margin: 0;
+  padding: 0;
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+#game-container {
+  position: relative;
+}
+
+canvas {
+  border: 3px solid #fff;
+  display: block;
+}
+
+/* ===== HUD ===== */
+#hud {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.85);
+  color: #333;
+  padding: 8px 14px;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+}
+
+/* ===== Botões principais (lado esquerdo) ===== */
+#ui-buttons {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#ui-buttons button {
+  background: rgba(255, 255, 255, 0.85);
+  border: none;
+  color: #333;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 10px;
+  transition: transform 0.2s, background 0.3s;
+  font-weight: bold;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+}
+
+#ui-buttons button:hover {
+  background: #ffe68c;
+  transform: scale(1.05);
+}
+
+/* ===== Botão Upgrade ===== */
+#upgradeBtn {
+  position: absolute;
+  top: 80px;
+  right: 20px;
+  background: #ffce54;
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  font-size: 28px;
+  cursor: pointer;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+  transition: transform 0.2s, background 0.2s;
+}
+#upgradeBtn:hover {
+  transform: scale(1.15);
+  background: #ffd966;
+}
+
+/* ===== Botão Comprar Amoeba ===== */
+#buyAmoebaBtn {
+  position: absolute;
+  top: 160px;
+  right: 20px;
+  background: #6ec1e4;
+  border: none;
+  border-radius: 12px;
+  width: 120px;
+  height: 40px;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+  transition: transform 0.2s, background 0.2s;
+}
+#buyAmoebaBtn:hover {
+  transform: scale(1.05);
+  background: #5ab0d8;
+}
+
+/* ===== Popup base ===== */
+#upgrade-popup, #buy-popup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 20px;
+  color: #333;
+  width: 420px;
+  max-height: 500px;
+  overflow-y: auto;
+  z-index: 10;
+  display: none;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+  animation: popupIn 0.3s ease-out forwards;
+}
+#upgrade-popup.hidden, #buy-popup.hidden {
+  display: none;
+}
+
+.popup-content h2 {
+  margin-top: 0;
+  text-align: center;
+  font-size: 24px;
+  color: #444;
+}
+
+/* Item de upgrade/compra */
+.upgrade-item {
+  margin: 12px 0;
+  padding: 12px;
+  background: #f5f5f5;
+  border-radius: 12px;
+  transition: background 0.2s, transform 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.upgrade-item:hover {
+  background: #ffefc1;
+  transform: scale(1.02);
+}
+
+.upgrade-preview {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid #333;
+}
+
+.upgrade-item button {
+  padding: 8px;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  background: #4caf50;
+  color: white;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+.upgrade-item button:hover {
+  background: #45a049;
+}
+
+/* Botão fechar */
+#closeUpgrade, #closeBuy {
+  display: block;
+  margin: 15px auto 0;
+  padding: 10px 18px;
+  background: #ff6961;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+#closeUpgrade:hover, #closeBuy:hover {
+  background: #ff5c53;
+}
+
+/* Animação popup */
+@keyframes popupIn {
+  from { opacity: 0; transform: translate(-50%, -50%) scale(0.7); }
+  to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+/* ===== Pop-up Educativo ===== */
+#info-popup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  background: rgba(255, 255, 255, 0.97);
+  border-radius: 20px;
+  padding: 20px;
+  color: #333;
+  width: 500px;
+  max-height: 600px;
+  text-align: center;
+  z-index: 20;
+  display: none;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+  animation: popupIn 0.4s ease-out forwards;
+}
+
+#info-popup img {
+  width: 250px;
+  height: auto;
+  border-radius: 16px;
+  margin: 15px 0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+#info-popup p {
+  margin: 10px 0;
+  font-size: 16px;
+  line-height: 1.4em;
+}
+
+#closeInfo {
+  display: block;
+  margin: 15px auto 0;
+  padding: 10px 18px;
+  background: #ff6961;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s, transform 0.2s;
+}
+#closeInfo:hover {
+  background: #ff5c53;
+  transform: scale(1.05);
+}
